@@ -3,6 +3,7 @@ package br.com.udemy.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.List;
 
 @Entity

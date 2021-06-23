@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class ClientController {
     ClientService clientService;
 
     @PostMapping
-    public ResponseEntity<ClientDTO> store (@RequestBody ClientDTO clientDTO) {
+    public ResponseEntity<ClientDTO> store (@Valid @RequestBody ClientDTO clientDTO) {
         return new ResponseEntity(clientService.store(clientDTO), HttpStatus.CREATED);
     }
 
@@ -28,7 +29,6 @@ public class ClientController {
 
     @GetMapping("/{id}")
     public ClientDTO findById (@PathVariable("id") Integer id ) {
-        System.out.println(id + " <<<<<");
         return clientService.findById(id);
     }
 }
