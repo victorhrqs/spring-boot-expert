@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Data
@@ -18,5 +19,6 @@ public class ClientDTO {
     private String name;
 
     @NotBlank(message = "field email can not be empty")
+    @Email(message = "type a valid email")
     private String email;
 }

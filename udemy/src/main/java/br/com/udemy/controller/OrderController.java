@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
@@ -28,7 +29,7 @@ public class OrderController {
     OrderService orderService;
 
     @PostMapping
-    public ResponseEntity<Integer> store (@RequestBody OrderDTO orderDTO) {
+    public ResponseEntity<Integer> store (@RequestBody @Valid OrderDTO orderDTO) {
         return new ResponseEntity(orderService.store(orderDTO), CREATED);
     }
 
