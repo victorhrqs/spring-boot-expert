@@ -16,5 +16,7 @@ public class ClientDTO {
 
     @NotBlank(message = "field name can not be empty")
     private String name;
+
+    @NotBlank(message = "field email can not be empty")
     private String email;
 }
