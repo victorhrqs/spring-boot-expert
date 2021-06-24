@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 //                .authenticated()
             .and()
-                .formLogin(); // cria o formulario de login do spring security
+                .httpBasic();
 //                .permitAll();
     }
 
