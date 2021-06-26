@@ -1,6 +1,7 @@
 package br.com.udemy.service;
 
 import br.com.udemy.dto.UserDTO;
+import br.com.udemy.exception.InvalidPasswordException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -29,5 +30,15 @@ public class UserDetailService implements UserDetailsService {
                 .password(user.getPassword())
                 .roles(roles)
                 .build();
+    }
+
+    public UserDetails auth ( br.com.udemy.entities.User user ) {
+        UserDetails userFromDB = this.loadUserByUsername(user.getUsername());
+
+        boolean passMatches = encoder.matches(user.getPassword(), userFromDB.getPassword());
+
+        if ( passMatches ) return userFromDB;
+
+        throw new InvalidPasswordException("Invalid password");
     }
 }
